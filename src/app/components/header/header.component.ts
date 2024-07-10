@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ResponsiveService } from '../../services/responsive.service';
 
 @Component({
   selector: 'mu-header',
@@ -7,6 +8,16 @@ import { Component } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+
+  public isSearchActive: boolean = false;
+
+  constructor(public responsiveService: ResponsiveService) {
+    //
+  }
+  
+  ngOnInit(): void {
+    //
+  }
 
 }

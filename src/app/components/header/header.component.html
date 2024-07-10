@@ -1,25 +1,77 @@
-<header class="p-3">
-  <div class="container-fluid m-0">
-    <div class="d-flex flex-wrap justify-content-around w-100">
-      <div class="d-flex">
-        <img src="../../../assets/icon-white.svg" alt="MuscleUp icon" width="40" height="40" class="me-2">
-        <h2 class="m-0 pe-5 title">MuscleUp</h2>
+<header class="p-3 mb-2 border-bottom">
+  <div class="container-fluid d-flex flex-wrap justify-content-between align-items-center">
+
+    @if (responsiveService.screenSize === 'Small' ||
+         responsiveService.screenSize === 'XSmall') {
+      <div class="dropdown pe-3">
+        <a href="#" class="d-block text-decoration-none" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="../../../assets/img/burger-menu-white.png" alt="mdo" width="32" height="32" class="rounded-circle">
+        </a>
+        <div class="dropdown-menu" aria-labelledby="triggerId">
+          <a class="dropdown-item" href="#">Home</a>
+          <a class="dropdown-item" href="#">Tools</a>
+          <a class="dropdown-item" href="#">Exercises</a>
+          <a class="dropdown-item" href="#">About</a>
+        </div>
       </div>
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="#" class="nav-link px-2 home">Home</a></li>
-        <li><a href="#" class="nav-link px-2 text-white">Strumenti</a></li>
-        <li><a href="#" class="nav-link px-2 text-white">Esercizi</a></li>
-        <li><a href="#" class="nav-link px-2 text-white">About</a></li>
-      </ul>
+    }
 
-      <form class="col-12 col-lg-3 mb-3 mb-lg-0 me-lg-3" role="search">
-        <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-      </form>
+    @if (!isSearchActive) {
+      <div class="d-flex align-items-center logo">
+        <img src="../../../assets/icon-white.svg" alt="MuscleUp icon" width="40" height="40" class="pb-1">
+        <h2 class="pe-5 ps-1 title">MuscleUp</h2>
+      </div>
+    }
 
-      <div class="text-end">
-        <button type="button" class="btn btn-outline-light me-2">Login</button>
-        <button type="button" class="btn btn-warning">Sign-up</button>
+    @if (responsiveService.screenSize !== 'Small' &&
+         responsiveService.screenSize !== 'XSmall') {
+          <ul class="nav">
+            <li><a href="#" class="nav-link px-2 active">Home</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a href="#" class="nav-link px-2">Tools</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a href="#" class="nav-link px-2">Exercises</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a href="#" class="nav-link px-2">About</a></li>
+          </ul>
+         }
+    
+    <div class="d-flex align-items-center">
+      @if (responsiveService.screenSize === 'XSmall') {
+        <img src="../../../assets/img/search-white.png" alt="search" width="36" height="36" class="me-1">
+      } @else {
+        <form class="pe-3" role="search">
+          <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+        </form>
+      }  
+      <div class="dropdown text-end">
+        <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="../../../assets/img/user-white.png" alt="mdo" width="34" height="34" class="rounded-circle">
+        </a>
+        <ul class="dropdown-menu text-small">
+          <li><a class="dropdown-item" href="#">Log in</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#">Sign up</a></li>
+        </ul>
       </div>
     </div>
   </div>
 </header>
+
+@switch (responsiveService.screenSize) {
+  @case ('XSmall') {
+    <p>XSmall</p>
+  }
+  @case ('Small') {
+    <p>Small</p>
+  }
+  @case ('Medium') {
+    <p>Medium</p>
+  }
+  @case ('Large') {
+    <p>Large</p>
+  }
+  @case ('XLarge') {
+    <p>XLarge</p>
+  }
+}

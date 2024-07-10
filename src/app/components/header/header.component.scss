@@ -15,3 +15,27 @@ header {
 .home {
     color: $accent-color;
 }
+
+.text-small {
+    font-size: 85%;
+}
+
+.dropdown-toggle:not(:focus) {
+  outline: 0;
+}
+
+.dropdown-toggle::after {
+    color: #fff;
+}
+
+.logo {
+    cursor: pointer;
+}
+
+.nav-link {
+    color: #fff;
+}
+
+.active {
+    color: $accent-color;
+}
