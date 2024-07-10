@@ -9,7 +9,6 @@ import { ResponsiveService } from '../../services/responsive.service';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
-
   public isSearchActive: boolean = false;
 
   constructor(public responsiveService: ResponsiveService) {
@@ -20,4 +19,8 @@ export class HeaderComponent implements OnInit {
     //
   }
 
+  
+  public toggleSearch(): void {
+    this.isSearchActive = !this.isSearchActive;
+  }
 }

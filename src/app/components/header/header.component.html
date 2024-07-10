@@ -1,6 +1,7 @@
 <header class="p-3 mb-2 border-bottom">
   <div class="container-fluid d-flex flex-wrap justify-content-between align-items-center">
 
+    <!-- Burger menu, only shown on Small and XSmall screen sizes -->
     @if (responsiveService.screenSize === 'Small' ||
          responsiveService.screenSize === 'XSmall') {
       <div class="dropdown pe-3">
@@ -16,13 +17,15 @@
       </div>
     }
 
-    @if (!isSearchActive) {
+    <!-- MuscleUp logo, hidden if the searchbar is activated while screen size is XSmall -->
+    @if (!isSearchActive || responsiveService.screenSize !== 'XSmall') {
       <div class="d-flex align-items-center logo">
-        <img src="../../../assets/icon-white.svg" alt="MuscleUp icon" width="40" height="40" class="pb-1">
+        <img src="../../../assets/icon-white.svg" alt="MuscleUp icon" width="36" height="36" class="pb-1">
         <h2 class="pe-5 ps-1 title">MuscleUp</h2>
       </div>
     }
 
+    <!-- Main navbar, only shown in Medium, Large and XLarge screen sizes -->
     @if (responsiveService.screenSize !== 'Small' &&
          responsiveService.screenSize !== 'XSmall') {
           <ul class="nav">
@@ -36,14 +39,24 @@
           </ul>
          }
     
+    <!-- Right-anchored container for search function and user profile -->
     <div class="d-flex align-items-center">
-      @if (responsiveService.screenSize === 'XSmall') {
-        <img src="../../../assets/img/search-white.png" alt="search" width="36" height="36" class="me-1">
-      } @else {
+      
+      <!-- Search function, shows a lens icon if screen size is XSmall and renables searchbar if icon is clicked -->
+      @if (responsiveService.screenSize !== 'XSmall') {
         <form class="pe-3" role="search">
           <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
         </form>
-      }  
+      } @else {
+        @if (isSearchActive) {
+          <form class="pe-3 col-lg-auto" role="search">
+            <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+          </form>
+        }
+        <img src="../../../assets/img/search-white.png" alt="search" width="36" height="36" class="me-1" (click)="toggleSearch()">
+      }
+
+      <!-- User profile, contains log in and sign up option in dropdown menu -->
       <div class="dropdown text-end">
         <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
           <img src="../../../assets/img/user-white.png" alt="mdo" width="34" height="34" class="rounded-circle">
@@ -54,7 +67,9 @@
           <li><a class="dropdown-item" href="#">Sign up</a></li>
         </ul>
       </div>
+
     </div>
+    
   </div>
 </header>
 
