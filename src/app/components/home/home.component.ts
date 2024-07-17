@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ResponsiveService } from '../../services/responsive.service';
 
 @Component({
   selector: 'mu-home',
@@ -9,4 +10,7 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  constructor(public responsiveService: ResponsiveService) {
+    //
+  }
 }
