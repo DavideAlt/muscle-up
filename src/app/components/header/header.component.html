@@ -1,4 +1,4 @@
-<header class="p-3 mb-2 position-fixed col-12 top-0 border-bottom">
+<header [ngClass]="{ 'py-1': hasScrolled }" class="p-3 mb-2 position-fixed col-12 top-0 border-bottom">
   <div class="container-fluid d-flex flex-wrap justify-content-between align-items-center">
 
     <!-- Burger menu, only shown on Small and XSmall screen sizes -->
@@ -28,16 +28,13 @@
     <!-- Main navbar, only shown in Medium, Large and XLarge screen sizes -->
     @if (responsiveService.screenSize !== 'Small' &&
          responsiveService.screenSize !== 'XSmall') {
-          <ul class="nav">
-            <li><a href="#" class="nav-link px-2 active">Home</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a href="#" class="nav-link px-2">Tools</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a href="#" class="nav-link px-2">Exercises</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a href="#" class="nav-link px-2">About</a></li>
-          </ul>
-         }
+      <ul class="nav" [ngClass]="{ 'scrolled': hasScrolled }">
+        <li> <a href="#" class="nav-link px-2 active">Home</a> </li>
+        <li> <a href="#" class="nav-link px-2">Tools</a> </li>
+        <li> <a href="#" class="nav-link px-2">Exercises</a> </li>
+        <li> <a href="#" class="nav-link px-2">About</a> </li>
+      </ul>
+    }
     
     <!-- Right-anchored container for search function and user profile -->
     <div class="d-flex align-items-center">
@@ -53,13 +50,13 @@
             <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
           </form>
         }
-        <img src="../../../assets/img/search-white.png" alt="search" width="36" height="36" class="me-1" (click)="toggleSearch()">
+        <img src="../../../assets/img/search-white.png" alt="search" width="32" height="32" class="me-1" (click)="toggleSearch()">
       }
 
       <!-- User profile, contains log in and sign up option in dropdown menu -->
       <div class="dropdown text-end">
         <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="../../../assets/img/user-white.png" alt="mdo" width="34" height="34" class="rounded-circle">
+          <img src="../../../assets/img/user-white.png" alt="mdo" width="28" height="28" class="rounded-circle">
         </a>
         <ul class="dropdown-menu text-small">
           <li><a class="dropdown-item" href="#">Log in</a></li>
@@ -72,21 +69,3 @@
     
   </div>
 </header>
-
-@switch (responsiveService.screenSize) {
-  @case ('XSmall') {
-    <p>XSmall</p>
-  }
-  @case ('Small') {
-    <p>Small</p>
-  }
-  @case ('Medium') {
-    <p>Medium</p>
-  }
-  @case ('Large') {
-    <p>Large</p>
-  }
-  @case ('XLarge') {
-    <p>XLarge</p>
-  }
-}
