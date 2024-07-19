@@ -40,7 +40,6 @@ export class BodymapComponent implements OnInit{
   public applyStyling(): void {
     if (this.bodyMapContainer.nativeElement) {
       const svgElement = this.bodyMapContainer.nativeElement.querySelector('svg');
-      console.log(svgElement);
       if (svgElement) {
         const paths = svgElement.querySelectorAll('g');
         paths.forEach((path: Element) => {
