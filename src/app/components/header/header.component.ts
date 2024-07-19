@@ -30,11 +30,8 @@ export class HeaderComponent implements OnInit {
 
   @HostListener('window:scroll')
   public onWindowScroll(): void {
-    console.log('asd');
-    
     const offset = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
     this.hasScrolled = offset > 50;
-    console.log(this.hasScrolled);
     
   }
 }

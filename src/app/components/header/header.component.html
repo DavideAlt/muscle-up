@@ -1,4 +1,4 @@
-<header [ngClass]="{ 'py-1': hasScrolled }" class="p-3 mb-2 position-fixed col-12 top-0 border-bottom">
+<header [ngClass]="{ 'py-1': hasScrolled }" class="p-3 mb-2 position-relative col-12 top-0 border-bottom">
   <div class="container-fluid d-flex flex-wrap justify-content-between align-items-center">
 
     <!-- Burger menu, only shown on Small and XSmall screen sizes -->
@@ -28,7 +28,7 @@
     <!-- Main navbar, only shown in Medium, Large and XLarge screen sizes -->
     @if (responsiveService.screenSize !== 'Small' &&
          responsiveService.screenSize !== 'XSmall') {
-      <ul class="nav" [ngClass]="{ 'scrolled': hasScrolled }">
+      <ul class="nav" >
         <li> <a href="#" class="nav-link px-2 active">Home</a> </li>
         <li> <a href="#" class="nav-link px-2">Tools</a> </li>
         <li> <a href="#" class="nav-link px-2">Exercises</a> </li>
