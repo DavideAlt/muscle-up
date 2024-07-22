@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BreakpointObserver, Breakpoints, LayoutModule } from '@angular/cdk/layout'
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'
 import { ScreenSizeType } from '../model/utils';
 
 @Injectable({
