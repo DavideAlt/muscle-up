@@ -51,6 +51,7 @@ header {
     padding: 0.5rem 1rem;
     transition: color 0.3s;
     font-size: 110%;
+    cursor: pointer;
 }
 
 .nav .nav-link.active::after {

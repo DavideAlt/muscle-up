@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ResponsiveService } from '../../services/responsive.service';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'mu-header',
@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
+  public activeLink: string = '';
   public isSearchActive: boolean = false;
   public hasScrolled: boolean = false;
 
@@ -24,7 +25,11 @@ export class HeaderComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    //
+    this._router.events.subscribe((ev) => {
+      if (ev instanceof NavigationEnd) {
+        this.activeLink = ev.urlAfterRedirects;
+      }
+    });
   }
   
   public toggleSearch(): void {

@@ -28,11 +28,11 @@
     <!-- Main navbar, only shown in Medium, Large and XLarge screen sizes -->
     @if (responsiveService.screenSize !== 'Small' &&
          responsiveService.screenSize !== 'XSmall') {
-      <ul class="nav" >
-        <li> <a href="#" class="nav-link px-2 active">Home</a> </li>
-        <li> <a href="#" class="nav-link px-2">Tools</a> </li>
-        <li> <a href="#" class="nav-link px-2">Exercises</a> </li>
-        <li> <a href="#" class="nav-link px-2">About</a> </li>
+      <ul class="nav">
+        <li> <a (click)="goToHome()" [class.active]="activeLink === '/home'" class="nav-link px-2">Home</a> </li>
+        <li> <a (click)="goToTools()" [class.active]="activeLink === '/tools'" class="nav-link px-2">Tools</a> </li>
+        <li> <a (click)="goToExercises()" [class.active]="activeLink === '/exercises'" class="nav-link px-2">Exercises</a> </li>
+        <li> <a (click)="goToAbout()" [class.active]="activeLink === '/about'" class="nav-link px-2">About</a> </li>
       </ul>
     }
     
