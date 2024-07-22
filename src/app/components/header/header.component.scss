@@ -68,8 +68,3 @@ header {
     color: $accent-color;
     font-weight: 500;
 }
-
-.nav.scrolled .nav-link.active::after {
-    height: 4px;
-    transition: padding 0.3s ease;
-  }

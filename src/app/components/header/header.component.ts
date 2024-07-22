@@ -15,7 +15,6 @@ import { NavigationEnd, Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   public activeLink: string = '';
   public isSearchActive: boolean = false;
-  public hasScrolled: boolean = false;
 
   constructor(
     public responsiveService: ResponsiveService,
@@ -34,12 +33,6 @@ export class HeaderComponent implements OnInit {
   
   public toggleSearch(): void {
     this.isSearchActive = !this.isSearchActive;
-  }
-
-  @HostListener('window:scroll')
-  public onWindowScroll(): void {
-    const offset = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    this.hasScrolled = offset > 50;
   }
 
   public goToHome() {
