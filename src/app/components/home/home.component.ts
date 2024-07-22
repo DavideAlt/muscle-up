@@ -16,4 +16,5 @@ export class HomeComponent {
   constructor(public responsiveService: ResponsiveService) {
     //
   }
+
 }

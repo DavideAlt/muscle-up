@@ -1,16 +1,16 @@
 <footer class="py-4 col-12">
     <div class="border-bottom">
         <ul class="nav justify-content-center pb-3">
-            <li><a href="#" class="nav-link px-2 active">Home</a></li>
+            <li><a (click)="goToHome()" class="nav-link px-2 active">Home</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a href="#" class="nav-link px-2">Tools</a></li>
+            <li><a (click)="goToTools()" class="nav-link px-2">Tools</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a href="#" class="nav-link px-2">Exercises</a></li>
+            <li><a (click)="goToExercises()" class="nav-link px-2">Exercises</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a href="#" class="nav-link px-2">About</a></li>
+            <li><a (click)="goToAbout()" class="nav-link px-2">About</a></li>
         </ul>
     </div>
-    <div class="d-flex align-items-center logo justify-content-center mt-3">
+    <div (click)="goToHome()" class="d-flex align-items-center logo justify-content-center mt-3">
         <img src="../../../assets/icon-white.svg" alt="MuscleUp icon" width="36" height="36" class="pb-1">
         <h2 class="pe-5 ps-1 title">MuscleUp</h2>
     </div>

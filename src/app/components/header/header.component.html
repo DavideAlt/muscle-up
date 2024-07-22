@@ -9,17 +9,17 @@
           <img src="../../../assets/img/burger-menu-white.png" alt="mdo" width="32" height="32" class="rounded-circle">
         </a>
         <div class="dropdown-menu" aria-labelledby="triggerId">
-          <a class="dropdown-item" href="#">Home</a>
-          <a class="dropdown-item" href="#">Tools</a>
-          <a class="dropdown-item" href="#">Exercises</a>
-          <a class="dropdown-item" href="#">About</a>
+          <a class="dropdown-item" (click)="goToHome()">Home</a>
+          <a class="dropdown-item" (click)="goToTools()">Tools</a>
+          <a class="dropdown-item" (click)="goToExercises()">Exercises</a>
+          <a class="dropdown-item" (click)="goToAbout()">About</a>
         </div>
       </div>
     }
 
     <!-- MuscleUp logo, hidden if the searchbar is activated while screen size is XSmall -->
     @if (!isSearchActive || responsiveService.screenSize !== 'XSmall') {
-      <div class="d-flex align-items-center logo">
+      <div (click)="goToHome()" class="d-flex align-items-center logo">
         <img src="../../../assets/icon-white.svg" alt="MuscleUp icon" width="36" height="36" class="pb-1">
         <h2 class="pe-5 ps-1 title">MuscleUp</h2>
       </div>

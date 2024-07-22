@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mu-footer',
@@ -9,4 +10,25 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
 
+  constructor(
+    private _router: Router
+  ) {
+    //
+  }
+
+  public goToHome() {
+    this._router.navigate(['/home']);
+  }
+  
+  public goToTools() {
+    this._router.navigate(['/tools']);
+  }
+  
+  public goToExercises() {
+    this._router.navigate(['/exercises']);
+  }
+  
+  public goToAbout() {
+    this._router.navigate(['/about']);
+  }
 }
