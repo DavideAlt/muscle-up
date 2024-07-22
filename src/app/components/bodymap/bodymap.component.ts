@@ -14,6 +14,8 @@ export class BodymapComponent implements OnInit{
 
   @Input() public name?: string;
 
+  private _tooltip!: HTMLElement;
+
   public svgBodyMap?: SafeHtml;
 
   @ViewChild('bodyMapContainer', { static: false }) bodyMapContainer!: ElementRef;
@@ -42,14 +44,30 @@ export class BodymapComponent implements OnInit{
   }
 
   public applyStyling(): void {
+    this.createTooltip();
     if (this.bodyMapContainer.nativeElement) {
       const svgElement = this.bodyMapContainer.nativeElement.querySelector('svg');
       if (svgElement) {
         const regions = svgElement.querySelectorAll('g');
         regions.forEach((region: Element) => {
           this._renderer.setStyle(region, 'fill', '#8ECAE6');
-          this._renderer.listen(region, 'mouseover', () => this.onRegionMouseOver(region));
-          this._renderer.listen(region, 'mouseout', () => this.onRegionMouseOut(region));
+
+          this._renderer.listen(region, 'mouseover', (ev) => {
+            const regionId = region.getAttribute('id');
+            if (regionId) {
+              this.showTooltip(regionId, ev.clientX, ev.clientY);
+            }
+            this.onRegionMouseOver(region)
+          });
+
+          this._renderer.listen(region, 'mousemove', (event) => {
+            this.updateTooltipPosition(event.clientX, event.clientY);
+          });
+
+          this._renderer.listen(region, 'mouseout', () => {
+            this.hideTooltip();
+            this.onRegionMouseOut(region)
+          });
           this._renderer.listen(region, 'click', () => this.onRegionClick(region));
         });
       }
@@ -65,10 +83,45 @@ export class BodymapComponent implements OnInit{
   }
 
   private onRegionClick(region: Element): void {
+    this.hideTooltip()
     const id = region.getAttribute('id');
-    console.log('Clicked ID:', id);
-    /* TO-DO: REINDIRIZZARE ALLA PAGINA ESERCIZI DEL GRUPPO MUSCOLARE CLICKATO ----- ATTENTO CHE NON SIA ID='BODY' */
-    this._router.navigate([`/exercises/${id}`]);
+    if (id !== 'body') {
+      this._router.navigate([`/exercises/${id}`]);
+    }
+  }
+
+  private createTooltip(): void {
+    this._tooltip = this._renderer.createElement('div');
+    this._renderer.setStyle(this._tooltip, 'position', 'absolute');
+    this._renderer.setStyle(this._tooltip, 'backgroundColor', 'rgba(0, 0, 0, 0.75)');
+    this._renderer.setStyle(this._tooltip, 'color', '#fff');
+    this._renderer.setStyle(this._tooltip, 'padding', '5px');
+    this._renderer.setStyle(this._tooltip, 'borderRadius', '3px');
+    this._renderer.setStyle(this._tooltip, 'pointerEvents', 'none');
+    this._renderer.setStyle(this._tooltip, 'visibility', 'hidden');
+    this._renderer.setStyle(this._tooltip, 'zIndex', '1000');
+    this._renderer.appendChild(document.body, this._tooltip);
+  }
+
+  private showTooltip(regionId: string, x: number, y: number): void {
+    if (regionId !== 'body') {
+      this._renderer.setProperty(this._tooltip, 'textContent', regionId);
+      this._renderer.setStyle(this._tooltip, 'visibility', 'visible');
+      this._renderer.setStyle(this._tooltip, 'top', `${y}px`);
+      this._renderer.setStyle(this._tooltip, 'left', `${x}px`);
+    }
+    this.updateTooltipPosition(x, y);
+  }
+
+  private hideTooltip(): void {
+    this._renderer.setStyle(this._tooltip, 'visibility', 'hidden');
+  }
+
+  private updateTooltipPosition(x: number, y: number): void {
+    const scrollX = window.scrollX || window.pageXOffset;
+    const scrollY = window.scrollY || window.pageYOffset;
+    this._renderer.setStyle(this._tooltip, 'top', `${y + 10 + scrollY}px`);
+    this._renderer.setStyle(this._tooltip, 'left', `${x + 10 + scrollX}px`);
   }
   
 }
