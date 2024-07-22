@@ -1,20 +1,22 @@
- @switch (responsiveService.screenSize) {
-    @case ('XSmall') {
-      <p>XSmall</p>
+  <div class="bodymap-container p-4">
+    @if (responsiveService.screenSize === 'Small' || responsiveService.screenSize === 'XSmall') {
+      <div class="row">
+        <div class="bodymap mb-3">
+          <mu-bodymap name="maleFront"></mu-bodymap>
+        </div>
+        <div class="bodymap mt-4">
+          <mu-bodymap name="maleBack"></mu-bodymap>
+        </div>
+      </div>
+    } @else {
+      <div class="row">
+        <div class="bodymap col-lg-5 me-5">
+          <mu-bodymap name="maleFront"></mu-bodymap>
+        </div>
+        <div class="bodymap col-lg-5">
+          <mu-bodymap name="maleBack"></mu-bodymap>
+        </div>
+      </div>
     }
-    @case ('Small') {
-      <p>Small</p>
-    }
-    @case ('Medium') {
-      <p>Medium</p>
-    }
-    @case ('Large') {
-      <p>Large</p>
-    }
-    @case ('XLarge') {
-      <p>XLarge</p>
-    }
-  }
-
-  <mu-bodymap name="maleFront"></mu-bodymap>
-  <mu-bodymap name="maleBack"></mu-bodymap>
+  </div>
+  
