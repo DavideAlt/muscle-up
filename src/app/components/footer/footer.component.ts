@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'mu-footer',
@@ -8,12 +8,21 @@ import { Router } from '@angular/router';
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss'
 })
-export class FooterComponent {
+export class FooterComponent implements OnInit {
+  public activeLink: string = '';
 
   constructor(
     private _router: Router
   ) {
     //
+  }
+
+  ngOnInit(): void {
+    this._router.events.subscribe((ev) => {
+      if (ev instanceof NavigationEnd) {
+        this.activeLink = ev.urlAfterRedirects;
+      }
+    });
   }
 
   public goToHome() {

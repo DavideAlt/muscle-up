@@ -31,7 +31,7 @@
       <ul class="nav">
         <li> <a (click)="goToHome()" [class.active]="activeLink === '/home'" class="nav-link px-2">Home</a> </li>
         <li> <a (click)="goToTools()" [class.active]="activeLink === '/tools'" class="nav-link px-2">Tools</a> </li>
-        <li> <a (click)="goToExercises()" [class.active]="activeLink === '/exercises'" class="nav-link px-2">Exercises</a> </li>
+        <li> <a (click)="goToExercises()" [class.active]="activeLink.includes('/exercises')" class="nav-link px-2">Exercises</a> </li>
         <li> <a (click)="goToAbout()" [class.active]="activeLink === '/about'" class="nav-link px-2">About</a> </li>
       </ul>
     }
