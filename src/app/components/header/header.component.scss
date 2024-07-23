@@ -2,69 +2,52 @@
 
 header {
     background-color: $background-color;
-    transition: padding 0.3s ease;
-}
 
-.title {
-    color: $white;
-}
+    .dropdown {
+        .dropdown-toggle::after {
+            color: $white;
+        }
+    
+        .dropdown-item {
+            cursor: pointer;
+        }
+    }
+    
+    .logo {
+        cursor: pointer;
 
-.sign-up {
-    background-color: $accent-color;
-}
-
-.home {
-    color: $accent-color;
-}
-
-.text-small {
-    font-size: 85%;
-}
-
-.dropdown-toggle:not(:focus) {
-    outline: 0;
-}
-
-.dropdown-toggle::after {
-    color: $white;
-}
-
-.dropdown-item {
-    cursor: pointer;
-}
-
-.logo {
-    cursor: pointer;
-}
-
-.nav {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.nav .nav-link {
-    position: relative;
-    text-decoration: none;
-    color: $white;
-    padding: 0.5rem 1rem;
-    transition: color 0.3s;
-    font-size: 110%;
-    cursor: pointer;
-}
-
-.nav .nav-link.active::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 100%;
-    height: 3px;
-    background-color: $accent-color;
-}
-
-.nav .nav-link.active {
-    color: $accent-color;
-    font-weight: 500;
+        h2 {
+            margin: 0;
+        }
+    }
+    
+    .nav {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    
+        .nav-link {
+            position: relative;
+            color: $white;
+            padding: 0.5rem 1rem;
+            font-size: 110%;
+            cursor: pointer;
+        }
+    
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 100%;
+            height: 3px;
+            background-color: $accent-color;
+        }
+    
+        .nav-link.active {
+            color: $accent-color;
+            font-weight: 500;
+        }
+    }
 }
