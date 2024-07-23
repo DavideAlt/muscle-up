@@ -1,6 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
 $background-color: #03253A;
 $primary-color: #219EBC;
 $secondary-color: #8ECAE6;
 $accent-color: #FFB703;
 $secondary-accent-color: #FB8500;
-$white: #f0f0f0
+$white: #f0f0f0;
+
+.urbanist {
+    font-family: "Urbanist", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
