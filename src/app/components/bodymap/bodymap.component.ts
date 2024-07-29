@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
@@ -14,7 +14,7 @@ export class BodymapComponent implements OnInit{
 
   @Input() public name?: string;
 
-  private _tooltip!: HTMLElement;
+  private _tooltip!: HTMLElement | null;
 
   public svgBodyMap?: SafeHtml;
 
@@ -73,6 +73,7 @@ export class BodymapComponent implements OnInit{
             this.hideTooltip()
             const id = region.getAttribute('id');
             if (id !== 'body') {
+              this.removeTooltip();
               this._router.navigate([`/exercises/${id}`]);
             }
           });
@@ -80,9 +81,9 @@ export class BodymapComponent implements OnInit{
       }
     }
   }
-
   private createTooltip(): void {
     this._tooltip = this._renderer.createElement('div');
+    this._renderer.setAttribute(this._tooltip, 'class', 'tooltip');
     this._renderer.setStyle(this._tooltip, 'position', 'absolute');
     this._renderer.setStyle(this._tooltip, 'backgroundColor', 'rgba(0, 0, 0, 0.75)');
     this._renderer.setStyle(this._tooltip, 'color', '#fff');
@@ -113,6 +114,15 @@ export class BodymapComponent implements OnInit{
     const scrollY = window.scrollY || window.pageYOffset;
     this._renderer.setStyle(this._tooltip, 'top', `${y + 10 + scrollY}px`);
     this._renderer.setStyle(this._tooltip, 'left', `${x + 10 + scrollX}px`);
+  }
+
+  private removeTooltip(): void {
+    if (this._tooltip) {
+      const tooltips = document.querySelectorAll('.tooltip');
+      tooltips.forEach(tooltip => {
+        this._renderer.removeChild(tooltip.parentNode, tooltip);
+      });
+    }
   }
   
 }
