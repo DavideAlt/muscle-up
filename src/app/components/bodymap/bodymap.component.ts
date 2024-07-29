@@ -56,8 +56,8 @@ export class BodymapComponent implements OnInit{
             const regionId = region.getAttribute('id');
             if (regionId) {
               this.showTooltip(regionId, ev.clientX, ev.clientY);
+              this._renderer.setStyle(region, 'fill', '#FFB703');
             }
-            this.onRegionMouseOver(region)
           });
 
           this._renderer.listen(region, 'mousemove', (event) => {
@@ -66,27 +66,18 @@ export class BodymapComponent implements OnInit{
 
           this._renderer.listen(region, 'mouseout', () => {
             this.hideTooltip();
-            this.onRegionMouseOut(region)
+            this._renderer.setStyle(region, 'fill', '#8ECAE6');
           });
-          this._renderer.listen(region, 'click', () => this.onRegionClick(region));
+
+          this._renderer.listen(region, 'click', () => {
+            this.hideTooltip()
+            const id = region.getAttribute('id');
+            if (id !== 'body') {
+              this._router.navigate([`/exercises/${id}`]);
+            }
+          });
         });
       }
-    }
-  }
-
-  private onRegionMouseOver(region: Element): void {
-    this._renderer.setStyle(region, 'fill', '#FFB703');
-  }
-
-  private onRegionMouseOut(region: Element): void {
-    this._renderer.setStyle(region, 'fill', '#8ECAE6');
-  }
-
-  private onRegionClick(region: Element): void {
-    this.hideTooltip()
-    const id = region.getAttribute('id');
-    if (id !== 'body') {
-      this._router.navigate([`/exercises/${id}`]);
     }
   }
 
