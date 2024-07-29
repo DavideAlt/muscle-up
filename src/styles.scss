@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 
 $background-color: #03253A;
+$secondary-background-color: #02364F;
 $primary-color: #219EBC;
 $secondary-color: #8ECAE6;
 $accent-color: #FFB703;
@@ -12,3 +13,9 @@ $white: #f0f0f0;
     font-optical-sizing: auto;
     font-style: normal;
   }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
