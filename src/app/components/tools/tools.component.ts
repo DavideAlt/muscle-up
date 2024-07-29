@@ -5,7 +5,10 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './tools.component.html',
-  styleUrl: './tools.component.scss'
+  styleUrl: './tools.component.scss',
+  host: {
+    class:'toollist'
+}
 })
 export class ToolsComponent {
 

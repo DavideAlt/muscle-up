@@ -1,0 +1,13 @@
+@import '../../../styles.scss';
+
+.tool {
+    background-color: $primary-color;
+}
+
+.btn {
+    background-color: $accent-color;
+}
+
+.tool:hover {
+    background-color: $secondary-color;
+}
