@@ -1,4 +1,4 @@
-<footer class="py-4 col-12">
+<footer class="py-4">
     <div class="border-bottom">
         <ul class="nav justify-content-center pb-3">
             <li><a (click)="goToHome()" [class.active]="activeLink === '/home'" class="nav-link px-2">Home</a></li>
@@ -10,8 +10,8 @@
             <li><a (click)="goToAbout()" [class.active]="activeLink === '/about'" class="nav-link px-2">About</a></li>
         </ul>
     </div>
-    <div (click)="goToHome()" class="d-flex align-items-center logo justify-content-center mt-3">
+    <div (click)="goToHome()" class="d-flex logo justify-content-center pt-3">
         <img src="../../../assets/icon-white.svg" alt="MuscleUp icon" width="36" height="36" class="pb-1">
-        <h2 class="pe-5 ps-1 title">MuscleUp</h2>
+        <h2 class="ps-1 title">MuscleUp</h2>
     </div>
 </footer>
