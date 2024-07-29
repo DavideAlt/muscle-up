@@ -1,1 +1,8 @@
 @import '../../../styles.scss';
+
+$header-height: 4.6rem;
+
+mu-bodymap {
+    height: calc(95vh - $header-height);
+    overflow: hidden;
+}

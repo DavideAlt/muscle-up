@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ResponsiveService } from '../../services/responsive.service';
 import { NavigationEnd, Router } from '@angular/router';
